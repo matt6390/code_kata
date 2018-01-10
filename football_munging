@@ -1,2 +1,27 @@
-input = File.open('./weather.dat', File::RDONLY){|f| f.read }
+input = File.open('./football.dat', File::RDONLY){|f| f.read }
 array = input.lines.map(&:split)
+
+loops = array.length
+scored_for = 0 
+scored_against = 0
+team = 1
+score_diff = 0
+diff = 100 
+
+loops.times do
+  scored_for = array[team][6]
+  scored_against = array[team][8]
+  team += 1
+  score_diff = scored_for.to_i - scored_against.to_i
+  
+  if score_diff < diff
+    diff = score_diff
+  end 
+
+end
+
+p score_diff
+
+p array[2][6]
+
+p array[2][8]
